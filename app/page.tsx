@@ -29,7 +29,7 @@ const questions:Q[]=[
 {skill:"Language Use",q:"Choose: They ___ my friends.",opts:["am","is","are"],answer:"are"},
 {skill:"Language Use",q:"Choose: This is ___ apple.",opts:["a","an","the"],answer:"an"}];
 const correct=(q:Q,a:string)=>q.answer==="personal"?a.trim().length>0:a.trim().toLowerCase()===q.answer.toLowerCase();
-const bands=[["Strong Pre-A1 Foundation",24,26],["Developing Pre-A1",20,23],["Early Pre-A1",15,19],["Beginning English",0,14]];
+const bands:[string,number,number][]=[["Strong Pre-A1 Foundation",24,26],["Developing Pre-A1",20,23],["Early Pre-A1",15,19],["Beginning English",0,14]];
 export default function Home(){
 const [i,setI]=useState(0),[answers,setAnswers]=useState<string[]>([]),[done,setDone]=useState(false),[name,setName]=useState("");
 const q=questions[i];const score=useMemo(()=>answers.reduce((s,a,n)=>s+(a&&correct(questions[n],a)?1:0),0),[answers]);
