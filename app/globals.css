@@ -29,3 +29,7 @@
 .girl-option:nth-child(3) .body{background:#55b98c}
 .girl-option .hat{position:absolute;left:50%;top:18px;transform:translateX(-50%);width:66px;height:25px;background:#ffbd3c;border-radius:50% 50% 35% 35%;z-index:4}
 .girl-option .hat:after{content:"";position:absolute;left:9px;top:17px;width:48px;height:8px;background:#ff7b8f;border-radius:50%}
+
+
+/* Latest 3D visual series */
+.sprite-art{width:100%;height:100%;border-radius:18px;background-repeat:no-repeat;background-size:500% 300%;background-color:#eef5ff;background-position:center;box-shadow:inset 0 0 0 1px rgba(255,255,255,.35)}
