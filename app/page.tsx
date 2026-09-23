@@ -1,5 +1,6 @@
 "use client";
 import {useEffect,useMemo,useState} from "react";
+import {VISUAL_SPRITE} from "./visualSprite";
 
 type Q={section:"Listening"|"Reading & Writing";type:"choice"|"input"|"tf";prompt:string;opts?:string[];answer?:string;visual:string;audio?:string};
 
@@ -65,37 +66,21 @@ const bands:[string,number,number][]=[
 ["Strong Pre-A1 Foundation",48,53],["Developing Pre-A1",40,47],["Early Pre-A1",30,39],["Beginning English",0,29]
 ];
 
-function Illustration({kind}:{kind:string}){return <div className={"art art-"+kind} aria-hidden="true">
+function SpriteArt({kind}:{kind:string}){const map:Record<string,string>={apples:"0% 0%",bag:"25% 0%",dog:"50% 0%",book:"100% 0%",cat:"100% 50%",child:"50% 50%",girls:"75% 50%",family:"25% 50%",park:"0% 100%",sun:"25% 100%",bike:"0% 100%",garden:"0% 100%",table:"100% 0%",pencils:"100% 0%",girl:"75% 50%",friends:"25% 50%",bird:"0% 100%"};const pos=map[kind];if(!pos)return null;return <div className="sprite-art" style={{backgroundImage:"url("+VISUAL_SPRITE+")",backgroundPosition:pos}} aria-hidden="true"/>}
+
+function Illustration({kind}:{kind:string}){return <><SpriteArt kind={kind}/><div className={"art art-"+kind} aria-hidden="true">
   {kind==="ball"&&<><div className="ball-art">⚽</div><span className="ground"/></>}
-  {kind==="apples"&&<><div className="apple-row"><i/><i/><i/></div><span className="leaf"/></>}
-  {kind==="book"&&<div className="book-art"><b>ABC</b></div>}
-  {kind==="cat"&&<div className="cat-scene"><div className="chair"><span className="seat"/></div><div className="cat-art"><span className="ear e1"/><span className="ear e2"/><span className="eye x1"/><span className="eye x2"/><span className="nose"/></div><div className="plant"/></div>}
-  {kind==="dog"&&<div className="dog-scene"><div className="doghouse"/><div className="dog-art"><span className="ear e1"/><span className="ear e2"/><span className="eye x1"/><span className="eye x2"/><span className="nose"/></div><div className="dog-bowl"/><div className="dog-ball"/></div>}
-  {kind==="bag"&&<div className="bag-art"><span/></div>}
-  {kind==="child"&&<div className="person-art"><span className="head"/><span className="body"/></div>}
-  {kind==="girl"&&<div className="person-art girl-art"><span className="head"/><span className="body"/></div>}
-  {kind==="friends"&&<div className="friends-art"><span/><span/><span/></div>}
-  {kind==="family"&&<div className="friends-art family-art"><span/><span/><span/></div>}
-  {kind==="sun"&&<div className="sun-art">☀</div>}
-  {kind==="star"&&<div className="star-art">★</div>}
-  {kind==="garden"&&<div className="scene-art"><span className="tree"/><span className="flower"/><span className="ball-small"/></div>}
-  {kind==="park"&&<div className="scene-art park-art"><span className="tree"/><span className="kite-small"/></div>}
-  {kind==="table"&&<div className="table-art"><span className="cup"/></div>}
   {kind==="teddy"&&<div className="teddy-art">●</div>}
   {kind==="number"&&<div className="number-art">14</div>}
-  {kind==="girls"&&<div className="girls-scene"><div className="girl-option hat-girl"><span className="hat"/><span className="head"/><span className="body"/></div><div className="girl-option"><span className="head"/><span className="body"/></div><div className="girl-option"><span className="head"/><span className="body"/></div></div>}
+  {kind==="girls"&&!["girls"].includes(kind)&&null}
   {kind==="differences"&&<div className="difference-art"><span/><span/><span/></div>}
   {kind==="desk"&&<div className="desk-art"><span className="pencil-art"/></div>}
   {kind==="balloons"&&<div className="balloons-art"><span/><span/><span/><span/><span/><span/></div>}
   {kind==="kite"&&<div className="kite-art">◇</div>}
   {kind==="colours"&&<div className="colours-art"><span/><span/><span/></div>}
-  {kind==="pencils"&&<div className="pencils-art"><span/><span/><span/></div>}
-  {kind==="bike"&&<div className="bike-art">◯—◯</div>}
-  {kind==="bird"&&<div className="bird-art">◖•</div>}
   {kind==="rabbit"&&<div className="rabbit-art">◉</div>}
   {kind==="animal"&&<div className="animal-art">🐯</div>}
-</div>}
-
+</div></>}
 function Logo(){return <div className="logo"><div className="logo-mark">E</div><div><strong>English Explorer</strong><small>Young Learner Assessment</small></div></div>}
 
 export default function Home(){
