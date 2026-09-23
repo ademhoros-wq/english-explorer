@@ -4,7 +4,7 @@ import {useEffect,useMemo,useState} from "react";
 type Q={section:"Listening"|"Reading & Writing";type:"choice"|"input"|"tf";prompt:string;opts?:string[];answer?:string;visual:string;audio?:string};
 
 const questions:Q[]=[
-{section:"Listening",type:"choice",prompt:"What colour is the apple?",opts:["Red","Blue","Green"],answer:"Red",visual:"ball",audio:"What colour is the apple? The apple is red."},
+{section:"Listening",type:"choice",prompt:"What colour is the ball?",opts:["Red","Blue","Green"],answer:"Red",visual:"ball",audio:"What colour is the ball? The ball is red."},
 {section:"Listening",type:"choice",prompt:"How many apples are there?",opts:["Two","Three","Four"],answer:"Three",visual:"apples",audio:"How many apples are there? There are three apples."},
 {section:"Listening",type:"choice",prompt:"What is this?",opts:["A book","A pencil","A bag"],answer:"A book",visual:"book",audio:"Look at the picture. What is this? It is a book."},
 {section:"Listening",type:"choice",prompt:"Where is the cat?",opts:["Under the table","On the bed","In the bag"],answer:"Under the table",visual:"cat",audio:"Where is the cat? The cat is under the table."},
@@ -19,10 +19,10 @@ const questions:Q[]=[
 {section:"Listening",type:"choice",prompt:"What colour is the star?",opts:["Purple","Orange","Green"],answer:"Orange",visual:"star",audio:"What colour is the star? The star is orange."},
 {section:"Listening",type:"choice",prompt:"Who is wearing red?",opts:["Mia","Leo","Sam"],answer:"Leo",visual:"family",audio:"Mia is wearing blue. Leo is wearing red. Sam is wearing green. Who is wearing red?"},
 {section:"Listening",type:"choice",prompt:"What does Anna want?",opts:["A bike","A kite","A doll"],answer:"A kite",visual:"park",audio:"Anna is in the park. She wants a kite. What does Anna want?"},
-{section:"Listening",type:"choice",prompt:"Which picture shows the boy sleeping?",opts:["Picture A","Picture B","Picture C"],answer:"Picture B",visual:"differences",audio:"Look at the three pictures. Which picture shows the boy sleeping?"},
+{section:"Listening",type:"choice",prompt:"Which picture is different?",opts:["Picture A","Picture B","Picture C"],answer:"Picture C",visual:"differences",audio:"Look at the three pictures. Which picture is different?"},
 {section:"Listening",type:"choice",prompt:"Where is the pencil?",opts:["Next to the book","Behind the bag","In the box"],answer:"Next to the book",visual:"desk",audio:"Where is the pencil? It is next to the book."},
 {section:"Listening",type:"choice",prompt:"How many balloons?",opts:["Five","Six","Seven"],answer:"Six",visual:"balloons",audio:"Look at the balloons. How many are there? Six."},
-{section:"Listening",type:"choice",prompt:"Where is the boy?",opts:["At home","At the park","At school"],answer:"At the park",visual:"kite",audio:"The boy is at the park. Where is the boy?"},
+{section:"Listening",type:"choice",prompt:"What does the boy have?",opts:["A red car","A blue kite","A green ball"],answer:"A blue kite",visual:"kite",audio:"The boy has a blue kite. What does the boy have?"},
 {section:"Listening",type:"choice",prompt:"What is the last colour you hear?",opts:["Yellow","Blue","Red"],answer:"Red",visual:"colours",audio:"Yellow, blue and red. What is the last colour you hear?"},
 
 {section:"Reading & Writing",type:"tf",prompt:"The dog is big. Is this true?",opts:["Yes","No"],answer:"Yes",visual:"dog"},
@@ -44,9 +44,9 @@ const questions:Q[]=[
 {section:"Reading & Writing",type:"choice",prompt:"Choose the missing word: They ___ my friends.",opts:["am","is","are"],answer:"are",visual:"friends"},
 {section:"Reading & Writing",type:"choice",prompt:"Choose the missing word: This is ___ apple.",opts:["a","an","the"],answer:"an",visual:"apples"},
 {section:"Reading & Writing",type:"choice",prompt:"Read: 'Sam has a red bike.' What colour is Sam's bike?",opts:["Red","Blue","Green"],answer:"Red",visual:"bike"},
-{section:"Reading & Writing",type:"choice",prompt:"What animal is this?",opts:["A penguin","A bear","A tiger"],answer:"A penguin",visual:"bird"},
+{section:"Reading & Writing",type:"choice",prompt:"Read: 'The bird is in the tree.' Where is the bird?",opts:["In the tree","On the chair","Under the table"],answer:"In the tree",visual:"bird"},
 {section:"Reading & Writing",type:"choice",prompt:"Read: 'Mia has a small white cat.' What does Mia have?",opts:["A dog","A cat","A rabbit"],answer:"A cat",visual:"cat"},
-{section:"Reading & Writing",type:"choice",prompt:"Which shape is a triangle?",opts:["Circle","Square","Triangle"],answer:"Triangle",visual:"star"},
+{section:"Reading & Writing",type:"choice",prompt:"Read: 'There are three stars.' How many stars?",opts:["Two","Three","Four"],answer:"Three",visual:"star"},
 {section:"Reading & Writing",type:"choice",prompt:"Which word completes the sentence? This is a ___.",opts:["book","books","booking"],answer:"book",visual:"book"},
 {section:"Reading & Writing",type:"choice",prompt:"Which word completes the sentence? I like ___.",opts:["apples","apple","appling"],answer:"apples",visual:"apples"},
 {section:"Reading & Writing",type:"choice",prompt:"Choose the correct sentence.",opts:["He are happy.","He is happy.","He am happy."],answer:"He is happy.",visual:"child"},
@@ -54,7 +54,7 @@ const questions:Q[]=[
 {section:"Reading & Writing",type:"choice",prompt:"Read the mini-story: 'Leo has a blue bag. He puts a book in it.' What is in the bag?",opts:["A book","A ball","A pencil"],answer:"A book",visual:"bag"},
 {section:"Reading & Writing",type:"choice",prompt:"Read the mini-story: 'Lily is in the garden. She sees a yellow flower.' What does Lily see?",opts:["A yellow flower","A red ball","A blue bird"],answer:"A yellow flower",visual:"garden"},
 {section:"Reading & Writing",type:"choice",prompt:"Read: 'It is sunny. The children are in the park.' Where are the children?",opts:["At school","In the park","At home"],answer:"In the park",visual:"park"},
-{section:"Reading & Writing",type:"choice",prompt:"What animal is this?",opts:["A rabbit","A cat","A dog"],answer:"A rabbit",visual:"rabbit"},
+{section:"Reading & Writing",type:"choice",prompt:"Read: 'The rabbit is small and white.' What colour is the rabbit?",opts:["White","Brown","Black"],answer:"White",visual:"rabbit"},
 {section:"Reading & Writing",type:"choice",prompt:"Which word is a colour?",opts:["Happy","Purple","Jump"],answer:"Purple",visual:"colours"},
 {section:"Reading & Writing",type:"choice",prompt:"Which word is an animal?",opts:["Apple","Tiger","Table"],answer:"Tiger",visual:"animal"},
 {section:"Reading & Writing",type:"choice",prompt:"Which word is a number?",opts:["Seven","Yellow","Mother"],answer:"Seven",visual:"number"},
@@ -65,36 +65,37 @@ const bands:[string,number,number][]=[
 ["Strong Pre-A1 Foundation",48,53],["Developing Pre-A1",40,47],["Early Pre-A1",30,39],["Beginning English",0,29]
 ];
 
-function Illustration({kind}:{kind:string}){const scenes:Record<string,{main:string;items:string[];tone:string}>={
-ball:{main:"🍎",items:["✨","🍃","🧺"],tone:"warm"},
-apples:{main:"🍎",items:["🍎","🍎","🍃"],tone:"garden"},
-book:{main:"📘",items:["✏️","📚","⭐"],tone:"classroom"},
-cat:{main:"🐱",items:["🪑","🌿","🧶"],tone:"home"},
-dog:{main:"🐶",items:["🏠","🥣","⚽"],tone:"garden"},
-bag:{main:"🎒",items:["📚","✏️","⭐"],tone:"classroom"},
-child:{main:"👦",items:["🌳","⚽","⭐"],tone:"park"},
-girl:{main:"👧",items:["🌸","🎀","⭐"],tone:"park"},
-friends:{main:"🧒",items:["👧","👦","🌈"],tone:"park"},
-family:{main:"👨‍👩‍👦",items:["🏠","❤️","🌿"],tone:"home"},
-sun:{main:"☀️",items:["☁️","🌼","🦋"],tone:"sky"},
-star:{main:"⭐",items:["✨","🌙","☁️"],tone:"night"},
-garden:{main:"🌳",items:["🌼","🦋","⚽"],tone:"garden"},
-park:{main:"🛝",items:["🌳","🪁","🌼"],tone:"park"},
-table:{main:"🥤",items:["🍎","🥪","📘"],tone:"home"},
-teddy:{main:"🧸",items:["🛏️","💡","⭐"],tone:"home"},
-number:{main:"🔢",items:["🍎","✏️","📚"],tone:"classroom"},
-girls:{main:"👧",items:["👧🎩","👧","👧"],tone:"park"},
-differences:{main:"🖼️",items:["👦📖","😴","🍎"],tone:"classroom"},
-desk:{main:"📚",items:["✏️","🖊️","📓"],tone:"classroom"},
-balloons:{main:"🎈",items:["🎈","🎈","🎈"],tone:"sky"},
-kite:{main:"🪁",items:["☁️","🌳","🌼"],tone:"sky"},
-colours:{main:"🎨",items:["🔴","🔵","🟡"],tone:"classroom"},
-pencils:{main:"✏️",items:["🟡","🟢","🔵"],tone:"classroom"},
-bike:{main:"🚲",items:["🌳","🌼","☀️"],tone:"park"},
-bird:{main:"🐦",items:["🌳","☁️","🌼"],tone:"garden"},
-rabbit:{main:"🐰",items:["🥕","🌿","🌼"],tone:"garden"},
-animal:{main:"🐯",items:["🌿","🌳","⭐"],tone:"garden"}
-};const s=scenes[kind]||scenes.child;return <div className={`rich-art tone-${s.tone}`} aria-hidden="true"><div className="rich-decor rich-left">{s.items[0]}</div><div className="rich-decor rich-right">{s.items[1]}</div><div className="rich-main">{s.main}</div><div className="rich-decor rich-bottom">{s.items[2]}</div><div className="rich-glow"/></div>}
+function Illustration({kind}:{kind:string}){return <div className={"art art-"+kind} aria-hidden="true">
+  {kind==="ball"&&<><div className="ball-art">⚽</div><span className="ground"/></>}
+  {kind==="apples"&&<><div className="apple-row"><i/><i/><i/></div><span className="leaf"/></>}
+  {kind==="book"&&<div className="book-art"><b>ABC</b></div>}
+  {kind==="cat"&&<div className="cat-scene"><div className="chair"><span className="seat"/></div><div className="cat-art"><span className="ear e1"/><span className="ear e2"/><span className="eye x1"/><span className="eye x2"/><span className="nose"/></div><div className="plant"/></div>}
+  {kind==="dog"&&<div className="dog-scene"><div className="doghouse"/><div className="dog-art"><span className="ear e1"/><span className="ear e2"/><span className="eye x1"/><span className="eye x2"/><span className="nose"/></div><div className="dog-bowl"/><div className="dog-ball"/></div>}
+  {kind==="bag"&&<div className="bag-art"><span/></div>}
+  {kind==="child"&&<div className="person-art"><span className="head"/><span className="body"/></div>}
+  {kind==="girl"&&<div className="person-art girl-art"><span className="head"/><span className="body"/></div>}
+  {kind==="friends"&&<div className="friends-art"><span/><span/><span/></div>}
+  {kind==="family"&&<div className="friends-art family-art"><span/><span/><span/></div>}
+  {kind==="sun"&&<div className="sun-art">☀</div>}
+  {kind==="star"&&<div className="star-art">★</div>}
+  {kind==="garden"&&<div className="scene-art"><span className="tree"/><span className="flower"/><span className="ball-small"/></div>}
+  {kind==="park"&&<div className="scene-art park-art"><span className="tree"/><span className="kite-small"/></div>}
+  {kind==="table"&&<div className="table-art"><span className="cup"/></div>}
+  {kind==="teddy"&&<div className="teddy-art">●</div>}
+  {kind==="number"&&<div className="number-art">14</div>}
+  {kind==="girls"&&<div className="girls-scene"><div className="girl-option hat-girl"><span className="hat"/><span className="head"/><span className="body"/></div><div className="girl-option"><span className="head"/><span className="body"/></div><div className="girl-option"><span className="head"/><span className="body"/></div></div>}
+  {kind==="differences"&&<div className="difference-art"><span/><span/><span/></div>}
+  {kind==="desk"&&<div className="desk-art"><span className="pencil-art"/></div>}
+  {kind==="balloons"&&<div className="balloons-art"><span/><span/><span/><span/><span/><span/></div>}
+  {kind==="kite"&&<div className="kite-art">◇</div>}
+  {kind==="colours"&&<div className="colours-art"><span/><span/><span/></div>}
+  {kind==="pencils"&&<div className="pencils-art"><span/><span/><span/></div>}
+  {kind==="bike"&&<div className="bike-art">◯—◯</div>}
+  {kind==="bird"&&<div className="bird-art">◖•</div>}
+  {kind==="rabbit"&&<div className="rabbit-art">◉</div>}
+  {kind==="animal"&&<div className="animal-art">🐯</div>}
+</div>}
+
 function Logo(){return <div className="logo"><div className="logo-mark">E</div><div><strong>English Explorer</strong><small>Young Learner Assessment</small></div></div>}
 
 export default function Home(){
