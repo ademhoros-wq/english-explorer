@@ -12,7 +12,7 @@ const questions:Q[]=[
 {section:"Listening",type:"choice",prompt:"Which animal says 'meow'?",opts:["A dog","A cat","A bird"],answer:"A cat",visual:"cat",audio:"Which animal says meow? A cat says meow."},
 {section:"Listening",type:"choice",prompt:"What colour is the bag?",opts:["Blue","Yellow","Pink"],answer:"Blue",visual:"bag",audio:"What colour is the bag? The bag is blue."},
 {section:"Listening",type:"choice",prompt:"What colour is Tom's ball?",opts:["Yellow","Red","Green"],answer:"Yellow",visual:"garden",audio:"Tom is in the garden. His ball is yellow. What colour is Tom's ball?"},
-{section:"Listening",type:"choice",prompt:"Point to the girl with the hat.",opts:["Girl A","Girl B","Girl C"],answer:"Girl B",visual:"girls",audio:"Look carefully. Point to the girl with the hat."},
+{section:"Listening",type:"choice",prompt:"Which girl is wearing the hat?",opts:["Girl A","Girl B","Girl C"],answer:"Girl A",visual:"girls",audio:"Look carefully. Which girl is wearing the hat?"},
 {section:"Listening",type:"choice",prompt:"What is on the table?",opts:["A cup","A book","A ball"],answer:"A cup",visual:"table",audio:"Look at the table. What is on the table? A cup."},
 {section:"Listening",type:"choice",prompt:"Where is the teddy?",opts:["In the box","On the chair","Under the bed"],answer:"On the chair",visual:"teddy",audio:"Where is the teddy? The teddy is on the chair."},
 {section:"Listening",type:"choice",prompt:"What number do you hear?",opts:["14","40","4"],answer:"14",visual:"number",audio:"Fourteen."},
@@ -26,7 +26,7 @@ const questions:Q[]=[
 {section:"Listening",type:"choice",prompt:"What is the last colour you hear?",opts:["Yellow","Blue","Red"],answer:"Red",visual:"colours",audio:"Yellow, blue and red. What is the last colour you hear?"},
 
 {section:"Reading & Writing",type:"tf",prompt:"The dog is big. Is this true?",opts:["Yes","No"],answer:"Yes",visual:"dog"},
-{section:"Reading & Writing",type:"tf",prompt:"The cat is under the chair. Is this true?",opts:["Yes","No"],answer:"Yes",visual:"cat"},
+{section:"Reading & Writing",type:"tf",prompt:"Look at the picture. Is the cat under the chair?",opts:["Yes","No"],answer:"Yes",visual:"cat"},
 {section:"Reading & Writing",type:"choice",prompt:"Emma has two pencils. How many pencils does Emma have?",opts:["One","Two","Three"],answer:"Two",visual:"pencils"},
 {section:"Reading & Writing",type:"choice",prompt:"The sun is yellow. What colour is the sun?",opts:["Blue","Yellow","Black"],answer:"Yellow",visual:"sun"},
 {section:"Reading & Writing",type:"choice",prompt:"Ben likes apples. What does Ben like?",opts:["Apples","Cars","Dogs"],answer:"Apples",visual:"apples"},
@@ -38,7 +38,7 @@ const questions:Q[]=[
 {section:"Reading & Writing",type:"input",prompt:"Put the letters in the right order: G • O • D",answer:"dog",visual:"dog"},
 {section:"Reading & Writing",type:"input",prompt:"Complete: My name is ______.",answer:"personal",visual:"child"},
 {section:"Reading & Writing",type:"input",prompt:"Complete: I am ______ years old.",answer:"personal",visual:"child"},
-{section:"Reading & Writing",type:"input",prompt:"Complete: The dog is ______.",answer:"brown",visual:"dog"},
+{section:"Reading & Writing",type:"choice",prompt:"What colour is the dog?",opts:["Brown","Blue","Green"],answer:"Brown",visual:"dog"},
 {section:"Reading & Writing",type:"choice",prompt:"Choose the missing word: I ___ seven.",opts:["am","is","are"],answer:"am",visual:"child"},
 {section:"Reading & Writing",type:"choice",prompt:"Choose the missing word: She ___ happy.",opts:["am","is","are"],answer:"is",visual:"girl"},
 {section:"Reading & Writing",type:"choice",prompt:"Choose the missing word: They ___ my friends.",opts:["am","is","are"],answer:"are",visual:"friends"},
@@ -69,8 +69,8 @@ function Illustration({kind}:{kind:string}){return <div className={"art art-"+ki
   {kind==="ball"&&<><div className="ball-art">⚽</div><span className="ground"/></>}
   {kind==="apples"&&<><div className="apple-row"><i/><i/><i/></div><span className="leaf"/></>}
   {kind==="book"&&<div className="book-art"><b>ABC</b></div>}
-  {kind==="cat"&&<div className="cat-art"><span className="ear e1"/><span className="ear e2"/><span className="eye x1"/><span className="eye x2"/><span className="nose"/></div>}
-  {kind==="dog"&&<div className="dog-art"><span className="ear e1"/><span className="ear e2"/><span className="eye x1"/><span className="eye x2"/><span className="nose"/></div>}
+  {kind==="cat"&&<div className="cat-scene"><div className="chair"><span className="seat"/></div><div className="cat-art"><span className="ear e1"/><span className="ear e2"/><span className="eye x1"/><span className="eye x2"/><span className="nose"/></div><div className="plant"/></div>}
+  {kind==="dog"&&<div className="dog-scene"><div className="doghouse"/><div className="dog-art"><span className="ear e1"/><span className="ear e2"/><span className="eye x1"/><span className="eye x2"/><span className="nose"/></div><div className="dog-bowl"/><div className="dog-ball"/></div>}
   {kind==="bag"&&<div className="bag-art"><span/></div>}
   {kind==="child"&&<div className="person-art"><span className="head"/><span className="body"/></div>}
   {kind==="girl"&&<div className="person-art girl-art"><span className="head"/><span className="body"/></div>}
@@ -83,7 +83,7 @@ function Illustration({kind}:{kind:string}){return <div className={"art art-"+ki
   {kind==="table"&&<div className="table-art"><span className="cup"/></div>}
   {kind==="teddy"&&<div className="teddy-art">●</div>}
   {kind==="number"&&<div className="number-art">14</div>}
-  {kind==="girls"&&<div className="friends-art girls-art"><span/><span/><span/></div>}
+  {kind==="girls"&&<div className="girls-scene"><div className="girl-option hat-girl"><span className="hat"/><span className="head"/><span className="body"/></div><div className="girl-option"><span className="head"/><span className="body"/></div><div className="girl-option"><span className="head"/><span className="body"/></div></div>}
   {kind==="differences"&&<div className="difference-art"><span/><span/><span/></div>}
   {kind==="desk"&&<div className="desk-art"><span className="pencil-art"/></div>}
   {kind==="balloons"&&<div className="balloons-art"><span/><span/><span/><span/><span/><span/></div>}
