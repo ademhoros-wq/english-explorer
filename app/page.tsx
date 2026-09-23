@@ -68,11 +68,10 @@ const bands:[string,number,number][]=[
 
 function SpriteArt({kind}:{kind:string}){const map:Record<string,string>={apples:"0% 0%",bag:"25% 0%",dog:"50% 0%",book:"100% 0%",cat:"100% 50%",child:"50% 50%",girls:"75% 50%",family:"25% 50%",park:"0% 100%",sun:"25% 100%",bike:"0% 100%",garden:"0% 100%",table:"100% 0%",pencils:"100% 0%",girl:"75% 50%",friends:"25% 50%",bird:"0% 100%"};const pos=map[kind];if(!pos)return null;return <div className="sprite-art" style={{backgroundImage:"url("+VISUAL_SPRITE+")",backgroundPosition:pos}} aria-hidden="true"/>}
 
-function Illustration({kind}:{kind:string}){return <><SpriteArt kind={kind}/><div className={"art art-"+kind} aria-hidden="true">
+function Illustration({kind}:{kind:string}){const spriteKinds=new Set(["apples","bag","dog","book","cat","child","girls","family","park","sun","bike","garden","table","pencils","girl","friends","bird"]);if(spriteKinds.has(kind))return <SpriteArt kind={kind}/>;return <div className={"art art-"+kind} aria-hidden="true">
   {kind==="ball"&&<><div className="ball-art">⚽</div><span className="ground"/></>}
   {kind==="teddy"&&<div className="teddy-art">●</div>}
   {kind==="number"&&<div className="number-art">14</div>}
-  {kind==="girls"&&!["girls"].includes(kind)&&null}
   {kind==="differences"&&<div className="difference-art"><span/><span/><span/></div>}
   {kind==="desk"&&<div className="desk-art"><span className="pencil-art"/></div>}
   {kind==="balloons"&&<div className="balloons-art"><span/><span/><span/><span/><span/><span/></div>}
@@ -80,7 +79,7 @@ function Illustration({kind}:{kind:string}){return <><SpriteArt kind={kind}/><di
   {kind==="colours"&&<div className="colours-art"><span/><span/><span/></div>}
   {kind==="rabbit"&&<div className="rabbit-art">◉</div>}
   {kind==="animal"&&<div className="animal-art">🐯</div>}
-</div></>}
+</div>}
 function Logo(){return <div className="logo"><div className="logo-mark">E</div><div><strong>English Explorer</strong><small>Young Learner Assessment</small></div></div>}
 
 export default function Home(){
